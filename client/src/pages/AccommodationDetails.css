@@ -1,0 +1,255 @@
+:root {
+  --primary: #fef7f2;
+  --secondary: #2b1b12;
+  --accent: #DDC7BB;
+  --text: #695346;
+  --muted: #FFFFFF;
+  --info: #4F3527;
+  --cart:#e8d5c4;
+  
+}
+
+.accommodation-container {
+  padding: 2rem 4rem;
+  background-color: var(--primary);
+}
+
+/* Grid for main content */
+.accommodation-main-grid {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  gap: 2rem;
+}
+
+/* Left Column */
+.left-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text);
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 1rem;
+}
+
+.back-icon {
+  transform: rotate(180deg);
+  opacity: 0.65;
+  height: 1.2rem;
+}
+
+/* Image & Gallery */
+.accommodation-image-container {
+  margin-bottom: 1rem;
+  width: 700px;
+}
+
+.accommodation-image {
+  width: 100%;
+  max-height: 600px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 6px #DDC7BB;
+}
+
+.image-gallery {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.gallery-item {
+  width: 100px;
+  height: 100px;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 2px 6px #DDC7BB;
+  transition: transform 0.2s ease;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+}
+
+/* Location Details */
+.accommodation-location-details {
+  margin-bottom: 1rem;
+  
+}
+
+.accommodation-title{
+  margin-top: 1rem;
+  font-weight: bold;
+  font-size: 2rem;
+  color: var(--secondary);
+}
+.accommodation-text{
+  color: var(--text);
+  font-size: 1rem;
+}
+
+
+/* Divider */
+.divider {
+  margin: 2rem 0;
+  border: 1px solid var(--text);
+}
+
+/* Info Grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.info-card {
+  background: #fff;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.info-icon {
+  height: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Section */
+.section {
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.section-text {
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Features List */
+.features-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.feature-icon {
+  height: 1rem;
+  margin-right: 0.5rem;
+}
+
+/* Right Column - Owner Details */
+.right-column {
+  margin-top: 2.8rem;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  height: fit-content;
+}
+
+.owner-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--secondary);
+}
+
+.owner-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.owner-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.owner-name {
+  font-weight: bold;
+  color: var(--secondary);
+}
+
+.owner-contact,
+.owner-email {
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+
+.available-box, .available-times, .booking-box {
+  margin-top: 1.2rem;
+  background: #fef7f2;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.available-box h4,
+.available-times h4,
+.booking-box h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--secondary);
+}
+
+.available-box ul,
+.available-times ul {
+  padding-left: 1.2rem;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.booking-box p {
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+  color: var(--text);
+}
+
+.call-btn {
+  background: var(--secondary);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.3s ease;
+}
+
+.call-btn:hover {
+  background: #4f3527;
+}
