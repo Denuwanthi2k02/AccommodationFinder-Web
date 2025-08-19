@@ -20,15 +20,18 @@ const Hero = () => {
           Welcome To <br /> <span>AnnexMate</span>
         </h1>
         <p>
-          Find your perfect stay – quick and easy! AnnexMate is designed for students of the{" "}
-          <strong>Faculty of Engineering, University of Ruhuna</strong> to find comfortable and
-          convenient annexes and rental rooms near university.
+          Find your perfect stay – quick and easy! AnnexMate is designed for
+          students of the{" "}
+          <strong>Faculty of Engineering, University of Ruhuna</strong> to find
+          comfortable and convenient annexes and rental rooms near university.
         </p>
         <p>
-          This platform allows owners to easily list their available accommodations, and students
-          to browse, compare, and choose what suits them best — all in one place.
+          This platform allows owners to easily list their available
+          accommodations, and students to browse, compare, and choose what suits
+          them best — all in one place.
           <br />
-          Simple, secure, and stress-free — built with your university life in mind.
+          Simple, secure, and stress-free — built with your university life in
+          mind.
         </p>
       </div>
 
@@ -48,7 +51,9 @@ const Hero = () => {
           >
             <option value="">Distance</option>
             {distanceOptions.map((opt) => (
-              <option key={opt} value={opt}>{opt}</option>
+              <option key={opt} value={opt}>
+                {opt}
+              </option>
             ))}
           </select>
         </div>
@@ -62,7 +67,9 @@ const Hero = () => {
           >
             <option value="">Monthly Rent</option>
             {rentOptions.map((opt) => (
-              <option key={opt} value={opt}>{opt}</option>
+              <option key={opt} value={opt}>
+                {opt}
+              </option>
             ))}
           </select>
         </div>
@@ -76,7 +83,9 @@ const Hero = () => {
           >
             <option value="">No. of Students</option>
             {studentOptions.map((opt) => (
-              <option key={opt} value={opt}>{opt}</option>
+              <option key={opt} value={opt}>
+                {opt}
+              </option>
             ))}
           </select>
         </div>

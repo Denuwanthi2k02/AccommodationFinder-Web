@@ -1,14 +1,15 @@
 :root {
   --primary: #fef7f2;
   --secondary: #2b1b12;
-  --accent: #DDC7BB;
+  --accent: #ddc7bb;
   --text: #695346;
-  --muted: #FFFFFF;
-  --info: #4F3527;
+  --muted: #ffffff;
+  --info: #4f3527;
+  --cart: #e8d5c4;
+  --search: rgba(105, 83, 70, 0.7);
 }
 
-
-
+/* === Main Container === */
 .accommodations-container {
   display: flex;
   flex-direction: column;
@@ -17,6 +18,7 @@
   background: var(--primary);
 }
 
+/* === Header Section === */
 .accommodations-header {
   text-align: center;
   width: 100%;
@@ -24,9 +26,10 @@
   color: var(--secondary);
 }
 
+/* === Search Section === */
 .accommodations-search-box {
   display: flex;
-  margin: 1.5rem auto; 
+  margin: 1.5rem auto;
   align-items: center;
   background: white;
   padding: 0 1rem;
@@ -35,7 +38,7 @@
   max-width: 35rem;
   height: 3rem;
   border-radius: 9999px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .search-icon,
@@ -47,7 +50,6 @@
 
 .search-icon {
   margin-right: 0.5rem;
-  
 }
 
 .filter-icon {
@@ -60,9 +62,10 @@
   border: none;
   outline: none;
   font-size: 0.95rem;
-  color:var(--text);
+  color: var(--text);
 }
 
+/* === List Section === */
 .accommodations-list {
   padding: 2.5rem 1.5rem;
   width: 70%;
@@ -75,12 +78,12 @@
   margin-bottom: 1rem;
 }
 
+/* === Grid Section === */
 .accommodations-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
   margin-top: 1rem;
- 
 }
 
 @media (min-width: 640px) {

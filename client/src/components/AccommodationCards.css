@@ -1,16 +1,15 @@
 :root {
   --primary: #fef7f2;
   --secondary: #2b1b12;
-  --accent: #DDC7BB;
+  --accent: #ddc7bb;
   --text: #695346;
-  --muted: #FFFFFF;
-  --info: #4F3527;
-  --cart:#e8d5c4;
-  
+  --muted: #ffffff;
+  --info: #4f3527;
+  --cart: #e8d5c4;
 }
 
 .annex-card {
-  background:var(--cart);
+  background: var(--cart);
   border-radius: 0.75rem;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
@@ -66,7 +65,7 @@
 .price {
   font-size: 1rem;
   font-weight: bold;
-  color:var(--secondary);
+  color: var(--secondary);
 }
 
 .per-day {
@@ -91,7 +90,7 @@
 .annex-title {
   font-size: 1.125rem;
   font-weight: 600;
-  color:var(--secondary);
+  color: var(--secondary);
 }
 
 .annex-subtitle {
@@ -118,7 +117,7 @@
   display: flex;
   align-items: center;
   font-size: 0.875rem;
-  color:var(--text);
+  color: var(--text);
 }
 
 .spec-icon {

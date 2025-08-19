@@ -1,13 +1,11 @@
-
 :root {
   --primary: #fef7f2;
   --secondary: #2b1b12;
-  --accent: #DDC7BB;
+  --accent: #ddc7bb;
   --text: #695346;
-  --muted: #FFFFFF;
-  --info: #4F3527;
-  --cart:#e8d5c4;
-  
+  --muted: #ffffff;
+  --info: #4f3527;
+  --cart: #e8d5c4;
 }
 
 .footer-container {
@@ -15,7 +13,7 @@
   margin-top: 200px;
   font-size: 14px;
   background-color: var(--primary);
-  color: var(--text); /* text-gray-500 */
+  color: var(--text);
 }
 
 .footer-top {
@@ -24,7 +22,7 @@
   justify-content: space-between;
   gap: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--secondary); /* border-borderColor */
+  border-bottom: 1px solid var(--secondary);
 }
 
 .footer-section {
@@ -32,7 +30,7 @@
 }
 
 .footer-logo {
-  height: 36px;
+  height: 60px;
 }
 
 .footer-description {
@@ -55,7 +53,7 @@
 .footer-title {
   font-size: 16px;
   font-weight: 500;
-  color: var(--secondary); /* text-gray-800 */
+  color: var(--secondary);
   text-transform: uppercase;
   margin-bottom: 10px;
 }
@@ -76,10 +74,8 @@
 }
 
 .footer-section a:hover {
-  color:var(--secondary);
+  color: var(--secondary);
 }
-
-
 
 .footer-bottom {
   display: flex;

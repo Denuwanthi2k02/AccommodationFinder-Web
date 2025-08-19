@@ -1,12 +1,11 @@
 :root {
   --primary: #fef7f2;
   --secondary: #2b1b12;
-  --accent: #DDC7BB;
+  --accent: #ddc7bb;
   --text: #695346;
-  --muted: #FFFFFF;
-  --info: #4F3527;
-  --cart:#e8d5c4;
-  
+  --muted: #ffffff;
+  --info: #4f3527;
+  --cart: #e8d5c4;
 }
 
 .accommodation-container {
@@ -14,7 +13,6 @@
   background-color: var(--primary);
 }
 
-/* Grid for main content */
 .accommodation-main-grid {
   display: grid;
   grid-template-columns: 2fr 2fr;
@@ -57,7 +55,7 @@
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 1rem;
-  box-shadow: 0 2px 6px #DDC7BB;
+  box-shadow: 0 2px 6px #ddc7bb;
 }
 
 .image-gallery {
@@ -72,7 +70,7 @@
   border-radius: 6px;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 2px 6px #DDC7BB;
+  box-shadow: 0 2px 6px #ddc7bb;
   transition: transform 0.2s ease;
 }
 
@@ -89,20 +87,18 @@
 /* Location Details */
 .accommodation-location-details {
   margin-bottom: 1rem;
-  
 }
 
-.accommodation-title{
+.accommodation-title {
   margin-top: 1rem;
   font-weight: bold;
   font-size: 2rem;
   color: var(--secondary);
 }
-.accommodation-text{
+.accommodation-text {
   color: var(--text);
   font-size: 1rem;
 }
-
 
 /* Divider */
 .divider {
@@ -173,7 +169,7 @@
   background: #fff;
   padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   height: fit-content;
 }
 
@@ -209,8 +205,9 @@
   color: var(--text);
 }
 
-
-.available-box, .available-times, .booking-box {
+.available-box,
+.available-times,
+.booking-box {
   margin-top: 1.2rem;
   background: #fef7f2;
   padding: 1rem;

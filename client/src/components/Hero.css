@@ -2,10 +2,10 @@
 :root {
   --primary: #fef7f2;
   --secondary: #2b1b12;
-  --accent: #DDC7BB;
+  --accent: #ddc7bb;
   --text: #695346;
-  --muted: #FFFFFF;
-  --info: #4F3527;
+  --muted: #ffffff;
+  --info: #4f3527;
   --cart: #e8d5c4;
 }
 
@@ -17,7 +17,6 @@
   padding: 4rem 6%;
   position: relative;
   height: 550px;
-  
 }
 
 .hero-text h1 {
@@ -81,6 +80,7 @@
   font-size: 1rem;
   cursor: pointer;
   flex: 1;
+  color: rgba(105, 83, 70, 0.8);
 }
 
 .search-btn {

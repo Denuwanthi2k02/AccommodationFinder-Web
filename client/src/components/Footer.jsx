@@ -1,6 +1,6 @@
-import React from 'react';
-import { assets } from '../assets/assets';
-import './Footer.css';
+import React from "react";
+import { assets } from "../assets/assets";
+import "./Footer.css";
 
 const Footer = () => {
   return (
@@ -14,10 +14,18 @@ const Footer = () => {
             industry. Lorem Ipsum has been the industry's standard dummy text.
           </p>
           <div className="footer-social">
-            <a href="#"><img src={assets.facebook_logo} alt="Facebook" /></a>
-            <a href="#"><img src={assets.instagram_logo} alt="Instagram" /></a>
-            <a href="#"><img src={assets.twitter_logo} alt="Twitter" /></a>
-            <a href="#"><img src={assets.gmail_logo} alt="Gmail" /></a>
+            <a href="#">
+              <img src={assets.facebook_logo} alt="Facebook" />
+            </a>
+            <a href="#">
+              <img src={assets.instagram_logo} alt="Instagram" />
+            </a>
+            <a href="#">
+              <img src={assets.twitter_logo} alt="Twitter" />
+            </a>
+            <a href="#">
+              <img src={assets.gmail_logo} alt="Gmail" />
+            </a>
           </div>
         </div>
 
@@ -25,10 +33,18 @@ const Footer = () => {
         <div className="footer-section">
           <h2 className="footer-title">Quick Links</h2>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Browse Accommodations</a></li>
-            <li><a href="#">List Your Accommodations</a></li>
-            <li><a href="#">About Us</a></li>
+            <li>
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#">Browse Accommodations</a>
+            </li>
+            <li>
+              <a href="#">List Your Accommodations</a>
+            </li>
+            <li>
+              <a href="#">About Us</a>
+            </li>
           </ul>
         </div>
 
@@ -36,9 +52,15 @@ const Footer = () => {
         <div className="footer-section">
           <h2 className="footer-title">Resources</h2>
           <ul>
-            <li><a href="#">Help Center</a></li>
-            <li><a href="#">Terms of Service</a></li>
-            <li><a href="#">Privacy Policy</a></li>
+            <li>
+              <a href="#">Help Center</a>
+            </li>
+            <li>
+              <a href="#">Terms of Service</a>
+            </li>
+            <li>
+              <a href="#">Privacy Policy</a>
+            </li>
           </ul>
         </div>
 
@@ -54,16 +76,23 @@ const Footer = () => {
         </div>
       </div>
 
-      
-
       <div className="footer-bottom">
-        <p>© {new Date().getFullYear()} <a href="https://prebuiltui.com">PrebuiltUI</a>. All rights reserved.</p>
+        <p>
+          © {new Date().getFullYear()}{" "}
+          <a href="https://prebuiltui.com">PrebuiltUI</a>. All rights reserved.
+        </p>
         <ul>
-          <li><a href="#">Privacy</a> </li>
+          <li>
+            <a href="#">Privacy</a>{" "}
+          </li>
           <li> | </li>
-          <li><a href="#">Terms</a> </li>
+          <li>
+            <a href="#">Terms</a>{" "}
+          </li>
           <li> | </li>
-          <li><a href="#">Cookies</a></li>
+          <li>
+            <a href="#">Cookies</a>
+          </li>
         </ul>
       </div>
     </div>

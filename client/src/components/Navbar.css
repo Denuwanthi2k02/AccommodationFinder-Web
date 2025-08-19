@@ -1,10 +1,10 @@
 :root {
   --primary: #fef7f2;
   --secondary: #2b1b12;
-  --accent: #DDC7BB;
+  --accent: #ddc7bb;
   --text: #695346;
-  --muted: #FFFFFF;
-  --info: #4F3527;
+  --muted: #ffffff;
+  --info: #4f3527;
 }
 
 /* Container styles */
@@ -35,7 +35,7 @@
 
 /* Logo image */
 .navbar-logo {
-  height: 70px;
+  height: 80px;
   max-height: 100%;
   object-fit: contain;
 }
@@ -97,7 +97,7 @@
 
 /* Search container */
 .navbar-search-container {
-  display: flex; /* fix alignment so icon is clickable */
+  display: flex;
   align-items: center;
   border: 1px solid var(--borderColor);
   padding: 0.375rem 0.75rem;
@@ -107,7 +107,7 @@
   box-sizing: border-box;
   background-color: transparent;
   cursor: pointer;
-  flex-shrink: 0; 
+  flex-shrink: 0;
 }
 
 .navbar-search-input {
@@ -126,7 +126,7 @@
 }
 
 .navbar-search-input::placeholder {
-  color: var(--text);
+  color: rgba(105, 83, 70, 0.8);
   text-align: center;
 }
 
@@ -156,16 +156,6 @@
 /* Dashboard button */
 .btn-dashboard {
   cursor: pointer; /* show hand icon */
-  padding: 0.5rem 0;
-  background: transparent;
-  border: none;
-  font: inherit;
-  line-height: 1.5;
-}
-
-/* Login button */
-.btn-login {
-  cursor: pointer; /* show hand icon */
   padding: 0.5rem 2rem;
   background-color: var(--secondary);
   color: white;
@@ -177,7 +167,17 @@
   justify-content: center;
 }
 
-.btn-login:hover {
+/* Login button */
+.btn-login {
+  cursor: pointer;
+  padding: 0.5rem 0;
+  background: transparent;
+  border: none;
+  font: inherit;
+  line-height: 1.5;
+}
+
+.btn-dashboard:hover {
   background-color: var(--text);
 }
 

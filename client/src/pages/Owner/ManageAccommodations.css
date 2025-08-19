@@ -1,0 +1,111 @@
+:root {
+  --primary: #fef7f2;
+  --secondary: #2b1b12;
+  --accent: #ddc7bb;
+  --text: #695346;
+  --muted: #ffffff;
+  --info: #4f3527;
+  --cart: #e8d5c4;
+  --search: rgba(105, 83, 70, 0.7);
+}
+
+/* Main Container Section */
+.manage-cars-container {
+  padding: 2.5rem 2.5rem 0 2.5rem;
+  width: 100%;
+}
+
+/* Table Wrapper Section */
+.manage-cars-table-wrapper {
+  max-width: 48rem;
+  width: 100%;
+  border: 1px solid var(--search);
+  border-radius: 0.375rem;
+  overflow: hidden;
+  margin-top: 1.5rem;
+}
+
+.manage-cars-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.875rem;
+  color: var(--text);
+}
+
+.manage-cars-table thead {
+  color: var(--text);
+}
+
+.manage-cars-table thead tr {
+  border-bottom: 2px solid var(--search);
+}
+
+.manage-cars-table tbody tr {
+  border-bottom: 1px solid var(--search);
+}
+
+.manage-cars-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.manage-cars-table th,
+.manage-cars-table td {
+  padding: 0.75rem;
+  font-weight: 500;
+}
+
+.hide-on-mobile {
+  display: table-cell;
+}
+
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}
+
+.car-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.car-image {
+  height: 3rem;
+  width: 3rem;
+  object-fit: cover;
+  border-radius: 0.375rem;
+}
+
+.car-name p {
+  margin: 0;
+}
+
+.status-available {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  background-color: #d1fae5;
+  color: #10b981;
+}
+
+.status-unavailable {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  background-color: #fee2e2;
+  color: #ef4444;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.action-icon {
+  cursor: pointer;
+  width: 2.5rem;
+  height: 2.5rem;
+}

@@ -37,6 +37,10 @@ import banner_car_image from "./banner_car_image.png"
 import user_profile from "./user_profile.png"
 import upload_icon from "./upload_icon.svg"
 import image_2 from "./image_2.png"
+import shower_line_icon from "./shower_line_icon.svg"
+import gender from "./gender.svg"
+import annex from "./annex.svg"
+
 
 export const cityList = ['New York', 'Los Angeles', 'Houston', 'Chicago']
 
@@ -79,7 +83,11 @@ export const assets = {
     banner_car_image,
     upload_icon,
     user_profile,
-    image_2
+    image_2,
+    shower_line_icon,
+    gender,
+    annex
+    
 
 }
 
@@ -90,10 +98,10 @@ export const menuLinks = [
 ]
 
 export const ownerMenuLinks = [
-    { name: "Dashboard", path: "/owner", icon: dashboardIcon, coloredIcon: dashboardIconColored },
-    { name: "Add car", path: "/owner/add-car", icon: addIcon, coloredIcon: addIconColored },
-    { name: "Manage Cars", path: "/owner/manage-cars", icon: carIcon, coloredIcon: carIconColored },
-    { name: "Manage Bookings", path: "/owner/manage-bookings", icon: listIcon, coloredIcon: listIconColored },
+    { name: "Dashboard", path: "/owner", icon: dashboardIcon, coloredIcon: dashboardIcon },
+    { name: "Add accommodation", path: "/owner/add-accommodation", icon: addIcon, coloredIcon: addIcon },
+    { name: "Manage accommodations", path: "/owner/manage-accommodations", icon: carIcon, coloredIcon: carIconColored },
+    // { name: "Manage Bookings", path: "/owner/manage-bookings", icon: listIcon, coloredIcon: listIconColored },
 ]
 
 export const dummyUserData = {
@@ -111,7 +119,7 @@ export const dummyAnnexData = [
         "No": "12/4 ",
         "Road": ", Green Road",
         "image": image_2,
-        // "year": 2006,
+        "views": 1,
         "Village": "Hapugala",
         "capacity": 4,
         "Bathroom": "1",
@@ -128,7 +136,7 @@ export const dummyAnnexData = [
         "No": "8/7",
         "Road": ", Palm Street",
         "image": image_2,
-        // "year": 2021,
+        "views": 0,
         "Village": "Wakwella",
         "capacity": 4,
         "Bathroom": "2",
@@ -145,7 +153,7 @@ export const dummyAnnexData = [
         "No": "5/2 ",
         "Road": ", Ocean View Lane",
         "image": image_2,
-        // "year": 2023,
+        "views": 0,
         "Village": "Hapugala",
         "capacity": 4,
         "Bathroom": "1",
@@ -153,7 +161,7 @@ export const dummyAnnexData = [
         "pricePerDay": 200,
         "location": "2.5",
         "description": "The Jeep Wrangler is a mid-size luxury SUV produced by Jeep. The Wrangler made its debut in 2003 as the first SUV ever produced by Jeep.",
-        "isAvaliable": true,
+        "isAvaliable": false,
         "createdAt": "2025-04-16T08:34:39.592Z",
     },
     {
@@ -162,7 +170,7 @@ export const dummyAnnexData = [
         "No": "23/6",
         "Road": ", Lotus Road 6",
         "image": image_2,
-        // "year": 2022,
+        "views": 0,
         "Village": "Wakwella",
         "capacity": 2,
         "Bathroom": "2",
@@ -182,7 +190,8 @@ export const dummyOwnerData = [
     "phone": "+94 71 234 5678",
     "email": "sandun.perera@example.com",
     "availableTime": ["9:00 AM - 11:00 AM", "2:00 PM - 5:00 PM"],
-    "address": "12/4 Green Road, Hapugala"
+    "address": "12/4 Green Road, Hapugala",
+    "image": user_profile
   },
   {
     "_id": "67fe3467ed8a8fe17d0ba6e3",  // Extra owner for future use
@@ -190,7 +199,8 @@ export const dummyOwnerData = [
     "phone": "+94 76 345 6789",
     "email": "dilani.fernando@example.com",
     "availableTime": "8:30 AM - 6:00 PM",
-    "address": "45 Palm Street, Wakwella"
+    "address": "45 Palm Street, Wakwella",
+    "image": user_profile
   },
   {
     "_id": "67fe3467ed8a8fe17d0ba6e4",  // Another extra owner
@@ -198,9 +208,101 @@ export const dummyOwnerData = [
     "phone": "+94 77 987 6543",
     "email": "ruwan.j@example.com",
     "availableTime": "10:00 AM - 8:00 PM",
-    "address": "23/6 Lotus Road, Wakwella"
+    "address": "23/6 Lotus Road, Wakwella",
+    "image": user_profile
   }
 ];
 
 
+export const dummyMyBookingsData = [
+
+{
+
+"_id": "68482bcc98eb9722b7751f70",
+
+"annex": dummyAnnexData[0],
+
+"user": "6847f7cab3d8daecdb517095",
+
+"owner": "6847f7cab3d8daecdb517095",
+
+"pickupDate": "2025-06-13T00:00:00.000Z",
+
+"returnDate": "2025-06-14T00:00:00.000Z",
+
+"status": "confirmed",
+
+"price": 440,
+
+"createdAt":"2025-06-10T12:57:48.244Z",
+
+},
+
+{
+
+"_id": "68482bb598eb972267751f60",
+
+"annex": dummyAnnexData[1],
+
+"user": "6847f7cab3d8daecdb517095",
+
+"owner": "67fe3467ed8a8fe17d0ba6e2",
+
+"pickupDate": "2025-06-12T00:00:00.000Z",
+
+"returnDate": "2025-06-12T00:00:00.000Z",
+
+"status": "pending",
+
+"price": 130,
+
+"createdAt": "2025-06-10T12:57:25.6132",
+
+},
+
+{
+
+"_id": "684800fa0fb481c5cfd92e56",
+
+"annex": dummyAnnexData[2],
+
+"user": "6847f7cab3d8daecdb517095",
+
+"owner": "67fe3467ed8a8fe17d0ba6e2",
+
+"pickupDate": "2025-06-11T00:00:00.000Z",
+
+"returnDate": "2025-06-12T00:00:00.000Z",
+
+"status": "pending",
+
+"price": 600,
+
+"createdAt": "2025-06-10T09:55:06.3792",
+
+}
+];
+
+export const dummyDashboardData = {
+
+"totalAccommodations": 4,
+
+"totalAvailable": 2,
+
+"pendingBookings": 0,
+
+"completedBookings": 2,
+
+"recentBookings": [
+
+dummyMyBookingsData[0],
+
+dummyMyBookingsData[1],
+dummyMyBookingsData[2]
+
+],
+
+"monthlyRevenue": 840
+
+}
 

@@ -1,12 +1,11 @@
 :root {
   --primary: #fef7f2;
   --secondary: #2b1b12;
-  --accent: #DDC7BB;
+  --accent: #ddc7bb;
   --text: #695346;
-  --muted: #FFFFFF;
-  --info: #4F3527;
+  --muted: #ffffff;
+  --info: #4f3527;
 }
-
 
 .title-container {
   display: flex;
@@ -24,27 +23,27 @@
 
 /* Main title */
 .title-main {
-  font-weight: 600; /* font-semibold */
-  font-size: 2.25rem; /* text-4xl */
+  font-weight: 600;
+  font-size: 2.25rem;
   color: var(--secondary);
 }
 
 @media (min-width: 768px) {
   .title-main {
-    font-size: 2.5rem; /* md:text-[40px] */
+    font-size: 2.5rem;
   }
 }
 
 /* Subtitle */
 .title-sub {
-  font-size: 0.875rem; /* text-sm */
-  color:var(--text); /* text-gray-500/90 */
-  margin-top: 0.5rem; /* mt-2 */
-  max-width: 39rem; /* max-w-156 (156 * 0.25rem = 39rem) */
+  font-size: 0.875rem;
+  color: var(--text);
+  margin-top: 0.5rem;
+  max-width: 39rem;
 }
 
 @media (min-width: 768px) {
   .title-sub {
-    font-size: 1rem; /* md:text-base */
+    font-size: 1rem;
   }
 }

@@ -1,18 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
 @import "tailwindcss";
 
-
 /* Add font to whole web page */
-*{
+* {
   font-family: "Outfit", sans-serif;
 }
-
-/* Define CSS variables */
 :root {
   --primary: #fef7f2;
   --secondary: #2b1b12;
-  --accent: #DDC7BB;
+  --accent: #ddc7bb;
   --text: #695346;
-  --muted: #FFFFFF;
-  --info: #4F3527;
+  --muted: #ffffff;
+  --info: #4f3527;
+  --cart: #e8d5c4;
+  --search: rgba(105, 83, 70, 0.7);
 }

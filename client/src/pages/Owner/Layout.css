@@ -1,0 +1,24 @@
+:root {
+  --primary: #fef7f2;
+  --secondary: #2b1b12;
+  --accent: #ddc7bb;
+  --text: #695346;
+  --muted: #ffffff;
+  --info: #4f3527;
+  --cart: #e8d5c4;
+  --search: rgba(105, 83, 70, 0.7);
+}
+
+
+/* Container holds navbar + body */
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Body holds sidebar + page content */
+.layout-body {
+  display: flex;
+  flex: 1;
+}

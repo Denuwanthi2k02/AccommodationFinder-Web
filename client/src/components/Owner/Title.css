@@ -1,0 +1,32 @@
+:root {
+  --primary: #fef7f2;
+  --secondary: #2b1b12;
+  --accent: #ddc7bb;
+  --text: #695346;
+  --muted: #ffffff;
+  --info: #4f3527;
+  --cart: #e8d5c4;
+  --search: rgba(105, 83, 70, 0.7);
+}
+
+.owner-title-heading {
+  font-weight: 500;
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  color: var(--text);
+}
+
+.owner-title-subtitle {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: rgba(105, 83, 70, 0.7);
+  margin-top: 0.5rem;
+  max-width: 39rem;
+}
+
+@media (min-width: 768px) {
+  .owner-title-subtitle {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
