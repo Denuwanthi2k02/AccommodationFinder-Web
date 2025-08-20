@@ -58,7 +58,8 @@ const Navbar = ({ setShowLogin, setLoginRole }) => {
           </button>
           <button
             onClick={() => {
-              /*setLoginRole("Owner");setShowLogin(true);*/ navigate("/owner");
+              setLoginRole("Owner");
+              setShowLogin(true); ;
             }}
             className="btn-dashboard"
           >

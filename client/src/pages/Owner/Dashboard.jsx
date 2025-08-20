@@ -63,7 +63,7 @@ const Dashboard = () => {
                 </div>
                 <div>
                   <p>
-                    {booking.annex.No} {booking.annex.Road}
+                    {booking.annex.No} {booking.annex.Street}
                   </p>
                   <p className="booking-date">
                     {booking.createdAt.split("T")[0]}

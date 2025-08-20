@@ -42,7 +42,7 @@ const ManageAccommodations = () => {
                   <img src={car.image} alt="" className="car-image" />
                   <div className="car-name hide-on-mobile">
                     <p>
-                      {car.No} {car.Road}
+                      {car.No} {car.Street}
                     </p>
                     <p>{car.Village} </p>
                   </div>

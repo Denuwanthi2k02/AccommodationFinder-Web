@@ -37,10 +37,10 @@ const AccommodationDetails = () => {
             </div>
           </div>
 
-          {/* No, Road, Village below gallery */}
+          {/* No, Street, Village below gallery */}
           <div className="accommodation-location-details">
             <h2 className="accommodation-title">
-              {accommodation.No} {accommodation.Road}
+              {accommodation.No} {accommodation.Street}
             </h2>
             <p className="accommodation-subtitle">{accommodation.Village}</p>
           </div>

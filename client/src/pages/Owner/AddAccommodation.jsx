@@ -9,7 +9,7 @@ const AddAccommodation = () => {
 
   const [annex, setCar] = useState({
     No: "",
-    Road: "",
+    Street: "",
     pricePerDay: 0,
     category: "",
     Gender: "",
@@ -116,8 +116,8 @@ const AddAccommodation = () => {
               type="text"
               placeholder="e.g. Ocean View Lane..."
               required
-              value={annex.Road}
-              onChange={(e) => setCar({ ...annex, Road: e.target.value })}
+              value={annex.Street}
+              onChange={(e) => setCar({ ...annex, Street: e.target.value })}
             />
           </div>
         </div>

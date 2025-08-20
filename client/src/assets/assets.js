@@ -117,7 +117,7 @@ export const dummyAnnexData = [
         "_id": "67ff5bc069c03d4e45f30b77",
         "owner": "67fe3467ed8a8fe17d0ba6e2",
         "No": "12/4 ",
-        "Road": ", Green Road",
+        "Street": ", Green Street",
         "image": image_2,
         "views": 1,
         "Village": "Hapugala",
@@ -134,7 +134,7 @@ export const dummyAnnexData = [
         "_id": "67ff6b758f1b3684286a2a65",
         "owner": "67fe3467ed8a8fe17d0ba6e3",
         "No": "8/7",
-        "Road": ", Palm Street",
+        "Street": ", Palm Street",
         "image": image_2,
         "views": 0,
         "Village": "Wakwella",
@@ -151,7 +151,7 @@ export const dummyAnnexData = [
         "_id": "67ff6b9f8f1b3684286a2a68",
         "owner": "67fe3467ed8a8fe17d0ba6e4",
         "No": "5/2 ",
-        "Road": ", Ocean View Lane",
+        "Street": ", Ocean View Lane",
         "image": image_2,
         "views": 0,
         "Village": "Hapugala",
@@ -168,7 +168,7 @@ export const dummyAnnexData = [
         "_id": "68009c93a3f5fc6338ea7e34",
         "owner": "67fe3467ed8a8fe17d0ba6e3",
         "No": "23/6",
-        "Road": ", Lotus Road 6",
+        "Street": ", Lotus Street 6",
         "image": image_2,
         "views": 0,
         "Village": "Wakwella",
@@ -190,7 +190,7 @@ export const dummyOwnerData = [
     "phone": "+94 71 234 5678",
     "email": "sandun.perera@example.com",
     "availableTime": ["9:00 AM - 11:00 AM", "2:00 PM - 5:00 PM"],
-    "address": "12/4 Green Road, Hapugala",
+    "address": "12/4 Green Street, Hapugala",
     "image": user_profile
   },
   {
@@ -208,7 +208,7 @@ export const dummyOwnerData = [
     "phone": "+94 77 987 6543",
     "email": "ruwan.j@example.com",
     "availableTime": "10:00 AM - 8:00 PM",
-    "address": "23/6 Lotus Road, Wakwella",
+    "address": "23/6 Lotus Street, Wakwella",
     "image": user_profile
   }
 ];

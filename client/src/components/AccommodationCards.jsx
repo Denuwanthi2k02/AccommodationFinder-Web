@@ -30,7 +30,7 @@ const AccommodationCards = ({ annex }) => {
         <div className="annex-details-header">
           <div>
             <h3 className="annex-title">
-              {annex.No} {annex.Road}
+              {annex.No} {annex.Street}
             </h3>
             <p className="annex-subtitle">{annex.Village}</p>
           </div>

@@ -22,7 +22,7 @@ const Accommodations = () => {
             onChange={(e) => setInput(e.target.value)}
             value={input}
             type="text"
-            placeholder="Search by village, road, or features"
+            placeholder="Search by village, Street, or features"
             className="accommodations-search-input"
           />
           <img src={assets.filter_icon} alt="filter" className="filter-icon" />
