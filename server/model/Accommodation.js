@@ -7,6 +7,7 @@ const annexSchema = new mongoose.Schema(
     No: { type: String, required: true },
     Street: { type: String, required: true },
     image: { type: String, required: true },
+    gallery: { type: [String], default: [] },
     Village: { type: String, required: true },
     capacity: { type: Number, required: true },
     Bathroom: { type: String, required: true },
