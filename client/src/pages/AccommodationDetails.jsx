@@ -24,14 +24,14 @@ const AccommodationDetails = () => {
           <div className="accommodation-image-container">
             <img
               src={accommodation.image}
-              alt=""
+              alt="Main"
               className="accommodation-image"
             />
 
             <div className="image-gallery">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="gallery-item">
-                  <img src={assets.image_2} alt={`Thumbnail ${i}`} />
+              {accommodation.gallery.map((img, index) => (
+                <div key={index} className="gallery-item">
+                  <img src={img} alt={`Gallery ${index}`} />
                 </div>
               ))}
             </div>

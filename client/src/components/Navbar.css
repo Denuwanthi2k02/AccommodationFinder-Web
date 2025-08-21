@@ -134,9 +134,22 @@
   width: 1rem;
   height: 1rem;
   object-fit: contain;
-  cursor: pointer; /* show hand icon */
+  cursor: pointer;
   flex-shrink: 0;
   pointer-events: auto;
+  margin-left: -0.3rem;
+}
+
+.navbar-account-icon {
+  width: 1rem;
+  height: 1rem;
+  object-fit: contain;
+  cursor: pointer; 
+  flex-shrink: 0;
+  pointer-events: auto;
+  margin-right: -1rem;
+ 
+  
 }
 
 /* Button group */
@@ -155,14 +168,14 @@
 
 /* Dashboard button */
 .btn-dashboard {
-  cursor: pointer; /* show hand icon */
+  cursor: pointer; 
   padding: 0.5rem 2rem;
   background-color: var(--secondary);
   color: white;
   border: none;
   border-radius: 0.5rem;
   transition: background-color 0.3s ease;
-  display: inline-flex; /* ensure correct hit area */
+  display: inline-flex; 
   align-items: center;
   justify-content: center;
 }
@@ -175,6 +188,7 @@
   border: none;
   font: inherit;
   line-height: 1.5;
+  margin-right: 1rem;
 }
 
 .btn-dashboard:hover {

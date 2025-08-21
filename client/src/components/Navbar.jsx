@@ -47,6 +47,11 @@ const Navbar = ({ setShowLogin, setLoginRole }) => {
 
         {/* Buttons Section */}
         <div className="navbar-button-group">
+          <img
+              src={assets.account}
+              alt="Account"
+              className="navbar-account-icon"
+            />
           <button
             onClick={() => {
               setLoginRole("User");
@@ -54,16 +59,17 @@ const Navbar = ({ setShowLogin, setLoginRole }) => {
             }}
             className="btn-login"
           >
+            
             Login
           </button>
           <button
             onClick={() => {
               setLoginRole("Owner");
-              setShowLogin(true); ;
+              setShowLogin(true);
             }}
             className="btn-dashboard"
           >
-            Owner Dashboard
+            List Accommodation
           </button>
         </div>
       </div>
