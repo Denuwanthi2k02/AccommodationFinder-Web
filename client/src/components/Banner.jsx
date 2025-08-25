@@ -17,7 +17,7 @@ const Banner = () => {
         <button className="banner-btn">List your accommodation</button>
       </div>
       <div className="banner-image">
-        <img src={assets.Bachground_image_1} alt="car" />
+        <img src={assets.Bachground_image_1} alt="annex" />
       </div>
     </div>
   );

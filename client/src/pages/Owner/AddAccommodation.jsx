@@ -2,15 +2,18 @@ import React, { useState } from "react";
 import { assets } from "../../assets/assets";
 import Title from "../../components/Owner/Title";
 import "./AddAccommodation.css";
+import { useAppContext } from "../../contex/AppContext";
+import toast from "react-hot-toast";
 
 const AddAccommodation = () => {
+  const{axios,currency} = useAppContext()
   const [mainImage, setMainImage] = useState(null);
   const [galleryImages, setGalleryImages] = useState([]); // array for 4 images
 
-  const [annex, setCar] = useState({
+  const [annex, setAnnex] = useState({
     No: "",
     Street: "",
-    pricePerDay: 0,
+    rentPerMonth: 0,
     category: "",
     Gender: "",
     Bathroom: "",
@@ -19,11 +22,49 @@ const AddAccommodation = () => {
     description: "",
   });
 
+  const[isLoading,setIsloading]=useState(false)
+
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     console.log("Accommodation Data Submitted:", annex);
     console.log("Main Image:", mainImage);
     console.log("Gallery Images:", galleryImages);
+    if(isLoading) return null
+    setIsloading(true)
+    try {
+      const formData =new FormData()
+      formData.append("image", mainImage);  // use mainImage state
+
+      galleryImages.forEach((file) => {
+        formData.append("gallery", file);  // append each gallery image
+      });
+
+      formData.append('annexData',JSON.stringify(annex))
+      const{data}=await axios.post('/api/owner/add-accommodation',formData)
+
+      if(data.success){
+        toast.success(data.message)
+        setMainImage(null)
+        setGalleryImages([]);   
+        setAnnex({
+          No: "",
+          Street: "",
+          rentPerMonth: 0,
+          category: "",
+          Gender: "",
+          Bathroom: "",
+          capacity: 0,
+          location: "",
+          description: "",
+        })
+      }else{
+        toast.error(data.message)
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }finally{
+      setIsloading(false)
+    }
   };
 
   return (
@@ -106,7 +147,7 @@ const AddAccommodation = () => {
               placeholder="e.g. 5/2..."
               required
               value={annex.No}
-              onChange={(e) => setCar({ ...annex, No: e.target.value })}
+              onChange={(e) => setAnnex({ ...annex, No: e.target.value })}
             />
           </div>
 
@@ -117,7 +158,7 @@ const AddAccommodation = () => {
               placeholder="e.g. Ocean View Lane..."
               required
               value={annex.Street}
-              onChange={(e) => setCar({ ...annex, Street: e.target.value })}
+              onChange={(e) => setAnnex({ ...annex, Street: e.target.value })}
             />
           </div>
         </div>
@@ -131,19 +172,19 @@ const AddAccommodation = () => {
               placeholder="e.g. Hapugala..."
               required
               value={annex.Village}
-              onChange={(e) => setCar({ ...annex, Village: e.target.value })}
+              onChange={(e) => setAnnex({ ...annex, Village: e.target.value })}
             />
           </div>
 
           <div className="form-group">
-            <label>Monthly Rent (LKR)</label>
+            <label>Monthly Rent {currency}</label>
             <input
               type="number"
               placeholder="5000"
               required
-              value={annex.pricePerDay}
+              value={annex.rentPerMonth}
               onChange={(e) =>
-                setCar({ ...annex, pricePerDay: e.target.value })
+                setAnnex({ ...annex, rentPerMonth: e.target.value })
               }
             />
           </div>
@@ -155,7 +196,7 @@ const AddAccommodation = () => {
               placeholder="e.g. 2.5"
               required
               value={annex.location}
-              onChange={(e) => setCar({ ...annex, location: e.target.value })}
+              onChange={(e) => setAnnex({ ...annex, location: e.target.value })}
             />
           </div>
         </div>
@@ -169,7 +210,7 @@ const AddAccommodation = () => {
               placeholder="e.g. 1, 2, shared/private"
               required
               value={annex.Bathroom}
-              onChange={(e) => setCar({ ...annex, Bathroom: e.target.value })}
+              onChange={(e) => setAnnex({ ...annex, Bathroom: e.target.value })}
             />
           </div>
 
@@ -177,7 +218,7 @@ const AddAccommodation = () => {
             <label>Preferred Gender</label>
             <select
               value={annex.Gender}
-              onChange={(e) => setCar({ ...annex, Gender: e.target.value })}
+              onChange={(e) => setAnnex({ ...annex, Gender: e.target.value })}
               required
             >
               <option value="">Select Preferred Gender</option>
@@ -194,7 +235,7 @@ const AddAccommodation = () => {
               placeholder="e.g. 4"
               required
               value={annex.capacity}
-              onChange={(e) => setCar({ ...annex, capacity: e.target.value })}
+              onChange={(e) => setAnnex({ ...annex, capacity: e.target.value })}
             />
           </div>
         </div>
@@ -207,14 +248,14 @@ const AddAccommodation = () => {
             placeholder="A comfortable annex with a spacious room, modern facilities, and a convenient location."
             required
             value={annex.description}
-            onChange={(e) => setCar({ ...annex, description: e.target.value })}
+            onChange={(e) => setAnnex({ ...annex, description: e.target.value })}
           />
         </div>
 
         {/* Submit */}
         <button type="submit" className="submit-btn">
           <img src={assets.tick_icon} alt="" />
-          List Your Accommodation
+          {isLoading ? 'Listing...' : 'List Your Accommodation'}
         </button>
       </form>
     </div>

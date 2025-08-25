@@ -1,14 +1,34 @@
 import React from "react";
 import "./Login.css";
+import { useAppContext } from "../contex/AppContext";
+import toast from "react-hot-toast";
 
-const Login = ({ setShowLogin, role = "User" }) => {
+
+const Login = () => {
+
+  const{setShowLogin,axios,setToken,navigate} = useAppContext()
   const [state, setState] = React.useState("login");
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
   const onSubmitHandler = async (event) => {
-    event.preventDefault();
+    try {
+      event.preventDefault();
+      const {data} = await axios.post(`/api/user/${state}`, {name,email,password})
+
+      if (data.success){
+        navigate('/')
+        setToken(data.token)
+        localStorage.setItem('token', data.token)
+        setShowLogin(false)
+      }else{
+        toast.error(data.message)
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
+    
   };
 
   return (
@@ -19,9 +39,7 @@ const Login = ({ setShowLogin, role = "User" }) => {
         className="login-form"
       >
         <p className="login-title">
-          <span className="A">
-            <strong>{role}</strong>
-          </span>{" "}
+          
           {state === "login" ? "Login" : "Sign Up"}
         </p>
 

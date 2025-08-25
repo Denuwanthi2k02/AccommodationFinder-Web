@@ -12,7 +12,7 @@ const annexSchema = new mongoose.Schema(
     capacity: { type: Number, required: true },
     Bathroom: { type: String, required: true },
     Gender: { type: String, required: true },
-    pricePerDay: { type: Number, required: true },
+    rentPerMonth: { type: Number, required: true },
     location: { type: String, required: true },
     description: { type: String, required: true },
     isAvaliable: { type: Boolean, default: true },

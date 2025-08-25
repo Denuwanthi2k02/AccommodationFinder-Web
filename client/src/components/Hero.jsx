@@ -7,10 +7,36 @@ const Hero = () => {
   const [distance, setDistance] = useState("");
   const [monthlyRent, setMonthlyRent] = useState("");
   const [numStudents, setNumStudents] = useState("");
+   const [results, setResults] = useState([]);
 
-  const distanceOptions = ["< 1 km", "1-3 km", "3-5 km", "5+ km"];
-  const rentOptions = ["< 5000", "5000-10000", "10000-15000", "15000+"];
-  const studentOptions = ["1", "2", "3", "4+"];
+  const distanceOptions = ["< 1 km", "1-3 km", "3-5 km", "Above 5 km"];
+  const rentOptions = ["< 5000", "5000-10000", "10000-15000", "Above 15000"];
+  const studentOptions = ["1", "2", "3", "Above 4"];
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+
+    const query = new URLSearchParams({
+      distance,
+      monthlyRent,
+      numStudents,
+    }).toString();
+
+    try {
+      const res = await fetch(`/api/user/search?${query}`);
+      const data = await res.json();
+
+      if (data.success) {
+        console.log("Search Results:", data.results);
+        setResults(data.results); // store results
+      } else {
+        console.error("Search failed:", data.message);
+      }
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+    }
+  };
+
 
   return (
     <section className="hero-section">

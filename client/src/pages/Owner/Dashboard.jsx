@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Title from "../../components/Owner/Title";
-import { dummyDashboardData, assets } from "../../assets/assets";
+import {  assets } from "../../assets/assets";
 import "./Dashboard.css";
+import { useAppContext } from "../../contex/AppContext";
+import toast from "react-hot-toast";
+
 
 const Dashboard = () => {
+  const{axios,isOwner} =useAppContext()
+  
+
   const [data, setData] = useState({
     totalAccommodations: 0,
     totalAvailable: 0,
-    recentBookings: [],
+     recentBookings: [] 
   });
 
   const dashboardCards = [
@@ -23,9 +29,26 @@ const Dashboard = () => {
     },
   ];
 
+  const fetchDashboardData = async ()=>{
+    try {
+      const{data} = await axios.get('/api/owner/dashboard')
+      if(data.success){
+        setData(data.dashboardData)
+      }else{
+        toast.error(data.message)
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
+
+  }
+
   useEffect(() => {
-    setData(dummyDashboardData);
-  }, []);
+    if(isOwner){
+      fetchDashboardData()
+    }
+    
+  }, [isOwner]);
 
   return (
     <div className="dashboard-container">

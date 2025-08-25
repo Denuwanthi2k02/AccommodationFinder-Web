@@ -71,7 +71,7 @@
   display: flex;
   gap: 0.25rem;
   padding: 0.5rem;
-  background: var(--text);
+  background: wheat;
   color: var(--text);
   cursor: pointer;
   border: none;

@@ -10,19 +10,22 @@ import AddAccommodation from './pages/Owner/AddAccommodation'
 import ManageAccommodations from './pages/Owner/ManageAccommodations'
 import Dashboard from './pages/Owner/Dashboard'
 import Login from './components/Login'
+import {Toaster} from 'react-hot-toast'
+import { useAppContext } from './contex/AppContext'
 
 
 
 const App = () => {
 
-  const[showLogin, setShowLogin ] = useState(false)
-  const [loginRole, setLoginRole] = useState("User")
+  const {showLogin} =useAppContext()
   const isOwnerPath = useLocation().pathname.startsWith('/owner')
+
   return (
     <>
-    {showLogin && <Login setShowLogin={setShowLogin} role={loginRole}/> }
+    <Toaster/>
+    {showLogin && <Login /> }
     
-     {!isOwnerPath && <Navbar setShowLogin={setShowLogin} setLoginRole={setLoginRole}/>}
+     {!isOwnerPath && <Navbar />}
 
 
      <Routes>

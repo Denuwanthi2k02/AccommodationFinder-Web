@@ -104,7 +104,7 @@ export const getOwnerAnnex = async (req, res) => {
 export const toggleAnnexAvailability = async (req, res) => {
   try {
     const { _id } = req.user;
-    const { annexId } = req.body;
+    const { annexId } = req.query;
 
     const annex = await Accommodation.findById(annexId);
 
@@ -128,7 +128,7 @@ export const toggleAnnexAvailability = async (req, res) => {
 export const deleteAnnex = async (req, res) => {
   try {
     const { _id } = req.user;
-    const { annexId } = req.body;
+    const { annexId } = req.query;
 
     const annex = await Accommodation.findById(annexId);
 
@@ -161,10 +161,56 @@ export const getDashboardData = async (req, res) => {
     }
 
     const annexs = await Accommodation.find({ owner: _id });
+    const totalAccommodations = annexs.length;
+    const totalAvailable = annexs.filter(a => a.isAvaliable).length;
 
-    res.json({ success: true, annexs });
+    res.json({
+      success: true,
+      dashboardData: {  
+        totalAccommodations,
+        totalAvailable,
+        recentBookings: [], 
+      },
+      annexs, 
+    });
+
+    
   } catch (error) {
     console.log(error.message);
     res.json({ success: false, message: error.message });
   }
 };
+
+//API to update user image
+
+export const updateUserImage = async (req, res)=>{
+  try {
+    const{_id}=req.user;
+    const imageFile  = req.file;
+
+    const fileBuffer =fs.readFileSync(imageFile.path)
+    const response=await imagekit.upload({
+      file:fileBuffer,
+      fileName:imageFile.originalname,
+      folder:"/users"
+    });
+
+    const  OptimizedImageUrl=imagekit.url({
+      path:response.filePath,
+      transformation:[
+         { width: "1280" },
+          { quality: "auto" },
+          { format: "webp" },
+      ]
+    });
+     
+    await User.findByIdAndUpdate(_id,{ image: OptimizedImageUrl });
+    res.json({success:true, message:"Image Updated", image: OptimizedImageUrl,});
+    
+  } catch (error) {
+    console.log(error.message);
+    res.json({ success: false, message: error.message });
+    
+  }
+
+}

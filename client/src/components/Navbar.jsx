@@ -2,11 +2,28 @@ import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { assets, menuLinks } from "../assets/assets";
 import "./Navbar.css";
+import {useAppContext} from '../contex/AppContext'
+import toast from "react-hot-toast";
 
-const Navbar = ({ setShowLogin, setLoginRole }) => {
+const Navbar = () => {
+
+  const{setShowLogin,user,logout,isOwner,axios,setIsOwner}= useAppContext()
   const location = useLocation();
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+  const changeRole =async ()=>{
+    try {
+     const {data} = await axios.post('/api/owner/change-role')
+     if(data.success){
+      setIsOwner (true)
+      toast.success(data.message)
+     }else{
+      toast.error(data.message)
+     }
+    } catch (error) {
+      toast.error(error.message)
+    }
+  }
 
   return (
     <div
@@ -54,22 +71,23 @@ const Navbar = ({ setShowLogin, setLoginRole }) => {
             />
           <button
             onClick={() => {
-              setLoginRole("User");
+              // setLoginRole("User");
+              user ? logout () :
               setShowLogin(true);
             }}
             className="btn-login"
           >
             
-            Login
+            {user ? 'Logout' : 'Login'}
           </button>
           <button
             onClick={() => {
-              setLoginRole("Owner");
-              setShowLogin(true);
+              isOwner ? navigate('/owner') : changeRole()
+              
             }}
             className="btn-dashboard"
           >
-            List Accommodation
+            {isOwner ? 'Dashboard' : 'List Accommodation '}
           </button>
         </div>
       </div>

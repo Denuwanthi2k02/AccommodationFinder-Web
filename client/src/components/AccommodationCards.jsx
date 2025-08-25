@@ -21,7 +21,7 @@ const AccommodationCards = ({ annex }) => {
         <img src={annex.image} alt="Car" className="annex-image" />
         {annex.isAvaliable && <p className="annex-available">Available Now</p>}
         <div className="annex-price">
-          <span className="price">${annex.pricePerDay}</span>
+          <span className="price"> {import.meta.env.VITE_CURRENCY} {annex.rentPerMonth}</span>
           <span className="per-day"> / month</span>
         </div>
       </div>

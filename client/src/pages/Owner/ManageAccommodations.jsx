@@ -1,79 +1,131 @@
 import React, { useEffect, useState } from "react";
 import Title from "../../components/Owner/Title";
-import { dummyAnnexData, assets } from "../../assets/assets";
+import {assets } from "../../assets/assets";
 import "./ManageAccommodations.css";
+import { useAppContext } from "../../contex/AppContext";
+import toast from "react-hot-toast";
+
 
 const ManageAccommodations = () => {
-  const [cars, setCars] = useState([]);
 
-  const fetchOwnerCars = async () => {
-    setCars(dummyAnnexData);
+  const{isOwner,axios,currency}=useAppContext()
+
+  const [annexs, setAnnexs] = useState([]);
+
+  const fetchOwnerAnnexs = async () => {
+    try {
+      const {data} =await axios.get('/api/owner/accommodations')
+      if (data.success){
+        setAnnexs(data.annexs)
+      }else{
+        toast.error(data.message)
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
+  };
+
+  const toggleAvailability = async (annexId) => {
+    try {
+      const {data} =await axios.post(`/api/owner/toggle-accommodation?annexId=${annexId}`)
+      if (data.success){
+        toast.success(data.message)
+        fetchOwnerAnnexs()
+      }else{
+        toast.error(data.message)
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
+  };
+
+  const deleteAnnex = async (annexId) => {
+
+    try {
+      const confirm = window.confirm('Are you sure you want to delete this Accommodation?')
+      if (!confirm) return null
+      console.log("Deleting annex:", annexId);
+      const {data} =await axios.post(`/api/owner/delete-accommodation?annexId=${annexId}`)
+      if (data.success){
+        toast.success(data.message)
+        fetchOwnerAnnexs()
+      }else{
+        toast.error(data.message)
+      }
+    } catch (error) {
+      toast.error(error.message)
+    }
   };
 
   useEffect(() => {
-    fetchOwnerCars();
-  }, []);
+    isOwner &&fetchOwnerAnnexs();
+  }, [isOwner]);
 
   return (
-    <div className="manage-cars-container">
+    <div className="manage-annexs-container">
       {/* Header Section */}
       <Title
-        title="Manage Cars"
-        subTitle="View all listed cars, update their details, or remove them from the booking platform."
+        title="Manage annexs"
+        subTitle="View all listed annexs, update their details, or remove them from the booking platform."
       />
 
       {/* Table Wrapper Section */}
-      <div className="manage-cars-table-wrapper">
-        <table className="manage-cars-table">
+      <div className="manage-annexs-table-wrapper">
+        <table className="manage-annexs-table">
           <thead>
             <tr>
               <th>Accommodation</th>
               <th className="hide-on-mobile">Capacity</th>
-              <th>Rent</th>
+              <th>Rent (Monthly)</th>
               <th className="hide-on-mobile">Status</th>
               <th>Actions</th>
             </tr>
           </thead>
 
           <tbody>
-            {cars.map((car, index) => (
+            {annexs.map((annex, index) => (
               <tr key={index}>
-                <td className="car-info">
-                  <img src={car.image} alt="" className="car-image" />
-                  <div className="car-name hide-on-mobile">
+                <td className="annex-info">
+                  <img src={annex.image} alt="" className="annexs-image" />
+                  <div className="annex-name hide-on-mobile">
                     <p>
-                      {car.No} {car.Street}
+                      {annex.No} {annex.Street}
                     </p>
-                    <p>{car.Village} </p>
+                    <p>{annex.Village} </p>
                   </div>
                 </td>
 
-                <td className="hide-on-mobile">{car.capacity}</td>
-                <td>{`$${car.pricePerDay}/month`}</td>
+                <td className="hide-on-mobile">{annex.capacity}</td>
+                <td>{currency}  {annex.rentPerMonth}</td>
                 <td className="hide-on-mobile">
                   <span
                     className={
-                      car.isAvaliable
+                      annex.isAvaliable
                         ? "status-available"
                         : "status-unavailable"
                     }
                   >
-                    {car.isAvaliable ? "Available" : "Unavailable"}
+                    {annex.isAvaliable ? "Available" : "Unavailable"}
                   </span>
                 </td>
                 <td className="actions">
+
                   <img
+                    onClick={()=>toggleAvailability(annex._id)}
                     src={
-                      car.isAvaliable ? assets.eye_close_icon : assets.eye_icon
+                      annex.isAvaliable ? assets.eye_close_icon : assets.eye_icon
                     }
                     alt=""
                     className="action-icon"
                   />
+
                   <img
+                    onClick={()=>deleteAnnex(annex._id)}
                     src={assets.delete_icon}
                     alt=""
                     className="action-icon"
                   />
+
                 </td>
               </tr>
             ))}
