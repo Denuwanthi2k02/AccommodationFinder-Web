@@ -1,40 +1,24 @@
 import React, { useState } from "react";
-import { assets, cityList } from "../assets/assets";
+import { assets} from "../assets/assets";
 import "./Hero.css";
+import { useNavigate } from "react-router-dom";
+// import { useAppContext } from "../contex/AppContext";
 
 const Hero = () => {
-  const [pickupLocation, setPickupLocation] = useState("");
+  
   const [distance, setDistance] = useState("");
   const [monthlyRent, setMonthlyRent] = useState("");
   const [numStudents, setNumStudents] = useState("");
-   const [results, setResults] = useState([]);
+  
+  
+  // const distanceOptions = ["< 1 km", "1-3 km", "3-5 km", "Above 5 km"];
+  // const rentOptions = ["< 5000", "5000-10000", "10000-15000", "Above 15000"];
+  // const studentOptions = ["1", "2", "3", "Above 4"];
 
-  const distanceOptions = ["< 1 km", "1-3 km", "3-5 km", "Above 5 km"];
-  const rentOptions = ["< 5000", "5000-10000", "10000-15000", "Above 15000"];
-  const studentOptions = ["1", "2", "3", "Above 4"];
-
-  const handleSearch = async (e) => {
+  const navigate = useNavigate()
+  const handleSearch =  (e) => {
     e.preventDefault();
-
-    const query = new URLSearchParams({
-      distance,
-      monthlyRent,
-      numStudents,
-    }).toString();
-
-    try {
-      const res = await fetch(`/api/user/search?${query}`);
-      const data = await res.json();
-
-      if (data.success) {
-        console.log("Search Results:", data.results);
-        setResults(data.results); // store results
-      } else {
-        console.error("Search failed:", data.message);
-      }
-    } catch (error) {
-      console.error("Error fetching search results:", error);
-    }
+    navigate(`/search?distance=${distance}&monthlyRent=${monthlyRent}&numStudents=${numStudents}`)
   };
 
 
@@ -67,53 +51,56 @@ const Hero = () => {
       </div>
 
       {/* Search Form */}
-      <form className="search-form">
+      <form onSubmit={handleSearch} className="search-form">
         {/* Distance */}
         <div className="search-field">
-          <select
+          <input
             required
+            placeholder="Distance (e.g. 5km)"
             value={distance}
             onChange={(e) => setDistance(e.target.value)}
           >
-            <option value="">Distance</option>
+            {/* <option value="">Distance</option>
             {distanceOptions.map((opt) => (
               <option key={opt} value={opt}>
                 {opt}
               </option>
-            ))}
-          </select>
+            ))} */}
+          </input>
         </div>
 
         {/* Monthly Rent */}
         <div className="search-field">
-          <select
+          <input
             required
+            placeholder="Monthly Rent (e.g. 10000)"
             value={monthlyRent}
             onChange={(e) => setMonthlyRent(e.target.value)}
           >
-            <option value="">Monthly Rent</option>
+            {/* <option value="">Monthly Rent</option>
             {rentOptions.map((opt) => (
               <option key={opt} value={opt}>
                 {opt}
               </option>
-            ))}
-          </select>
+            ))} */}
+          </input>
         </div>
 
         {/* No. of Students */}
         <div className="search-field">
-          <select
+          <input
             required
+            placeholder="Capacity (e.g. 10)"
             value={numStudents}
             onChange={(e) => setNumStudents(e.target.value)}
           >
-            <option value="">No. of Students</option>
+            {/* <option value="">No. of Students</option>
             {studentOptions.map((opt) => (
               <option key={opt} value={opt}>
                 {opt}
               </option>
-            ))}
-          </select>
+            ))} */}
+          </input>
         </div>
 
         <button type="submit" className="search-btn">

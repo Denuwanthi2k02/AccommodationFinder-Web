@@ -214,3 +214,67 @@ export const updateUserImage = async (req, res)=>{
   }
 
 }
+
+
+// API to update an accommodation
+export const updateAnnex = async (req, res) => {
+  try {
+    const { _id } = req.user;
+    const { annexId } = req.query;
+    let annexData = JSON.parse(req.body.annexData);
+
+    const annex = await Accommodation.findById(annexId);
+
+    // Check ownership
+    if (annex.owner.toString() !== _id.toString()) {
+      return res.json({ success: false, message: "Unauthorized" });
+    }
+
+    // Update main image if provided
+    if (req.files?.image?.[0]) {
+      const mainFileBuffer = fs.readFileSync(req.files.image[0].path);
+      const mainResponse = await imagekit.upload({
+        file: mainFileBuffer,
+        fileName: req.files.image[0].originalname,
+        folder: "/accommodations",
+      });
+
+      const mainImageUrl = imagekit.url({
+        path: mainResponse.filePath,
+        transformation: [{ width: "1280" }, { quality: "auto" }, { format: "webp" }],
+      });
+
+      annex.image = mainImageUrl;
+    }
+
+    // Update gallery images if provided
+    if (req.files?.gallery?.length) {
+      let galleryUrls = [];
+      for (let file of req.files.gallery) {
+        const fileBuffer = fs.readFileSync(file.path);
+        const response = await imagekit.upload({
+          file: fileBuffer,
+          fileName: file.originalname,
+          folder: "/accommodations/gallery",
+        });
+
+        galleryUrls.push(
+          imagekit.url({
+            path: response.filePath,
+            transformation: [{ width: "1280" }, { quality: "auto" }, { format: "webp" }],
+          })
+        );
+      }
+      annex.gallery = galleryUrls;
+    }
+
+    // Update other fields
+    Object.assign(annex, annexData);
+
+    await annex.save();
+    res.json({ success: true, message: "Accommodation updated successfully" });
+  } catch (error) {
+    console.log(error.message);
+    res.json({ success: false, message: error.message });
+  }
+};

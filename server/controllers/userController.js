@@ -79,6 +79,8 @@ export const getAnnexs = async (req, res) => {
 };
 
 
+
+
 //  Search Accommodations
 export const searchAccommodations = async (req, res) => {
   try {
@@ -139,4 +141,3 @@ export const searchAccommodations = async (req, res) => {
     res.json({ success: false, message: error.message });
   }
 };
-

@@ -28,6 +28,7 @@ import eye_icon from "./eye_icon.svg"
 import eye_close_icon from "./eye_close_icon.svg"
 import filter_icon from "./filter_icon.svg"
 import edit_icon from "./edit_icon.svg"
+import edit from "./edit.svg"
 import calendar_icon_colored from "./calendar_icon_colored.svg"
 import location_icon_colored from "./location_icon_colored.svg"
 import testimonial_image_1 from "./testimonial_image_1.png"
@@ -36,18 +37,18 @@ import Bachground_image_1 from "./Bachground_image_1.png"
 import banner_car_image from "./banner_car_image.png"
 import user_profile from "./user_profile.png"
 import upload_icon from "./upload_icon.svg"
-import annex_0 from "./annex_0.png"
-import annex_1 from "./annex_1.jpg"
-import annex_2 from "./annex_2.jpg"
-import annex_3 from "./annex_3.jpg"
-import annex_4 from "./annex_4.jpg"
-import annex_0_bath from "./annex_0_bath.jpg"
-import annex_1_bath from "./annex_1_bath.jpg"
-import annex_2_bath from "./annex_2_bath.jpg"
-import annex_3_bath from "./annex_3_bath.jpg"
-import annex_0_bed from "./annex_0_bed.jpg"
-import annex_1_bed from "./annex_1_bed.jpg"
-import annex_2_bed from "./annex_2_bed.jpg"
+// import annex_0 from "./annex_0.png"
+// import annex_1 from "./annex_1.jpg"
+// import annex_2 from "./annex_2.jpg"
+// import annex_3 from "./annex_3.jpg"
+// import annex_4 from "./annex_4.jpg"
+// import annex_0_bath from "./annex_0_bath.jpg"
+// import annex_1_bath from "./annex_1_bath.jpg"
+// import annex_2_bath from "./annex_2_bath.jpg"
+// import annex_3_bath from "./annex_3_bath.jpg"
+// import annex_0_bed from "./annex_0_bed.jpg"
+// import annex_1_bed from "./annex_1_bed.jpg"
+// import annex_2_bed from "./annex_2_bed.jpg"
 import shower_line_icon from "./shower_line_icon.svg"
 import gender from "./gender.svg"
 import annex from "./annex.svg"
@@ -67,6 +68,7 @@ export const assets = {
     close_icon,
     users_icon,
     edit_icon,
+    edit,
     car_icon,
     location_icon,
     fuel_icon,
@@ -95,21 +97,21 @@ export const assets = {
     banner_car_image,
     upload_icon,
     user_profile,
-    annex_0,
-    annex_1,
-    annex_2,
-    annex_3,
-    annex_4,
+    // annex_0,
+    // annex_1,
+    // annex_2,
+    // annex_3,
+    // annex_4,
     shower_line_icon,
     gender,
     annex,
-    annex_0_bath,
-    annex_0_bed,
-    annex_1_bed,
-    annex_1_bath,
-    annex_2_bath,
-    annex_2_bed,
-    annex_3_bath,
+    // annex_0_bath,
+    // annex_0_bed,
+    // annex_1_bed,
+    // annex_1_bath,
+    // annex_2_bath,
+    // annex_2_bed,
+    // annex_3_bath,
     account
     
 
@@ -142,8 +144,8 @@ export const dummyAnnexData = [
         "owner": "67fe3467ed8a8fe17d0ba6e2",
         "No": "12/4 ",
         "Street": ", Green Street",
-        "image": annex_0,
-        "gallery": [annex_1_bed, annex_1_bath, annex_1_bed, annex_1_bath],
+        // "image": annex_0,
+        // "gallery": [annex_1_bed, annex_1_bath, annex_1_bed, annex_1_bath],
         "views": 1,
         "Village": "Hapugala",
         "capacity": 4,
@@ -160,8 +162,8 @@ export const dummyAnnexData = [
         "owner": "67fe3467ed8a8fe17d0ba6e3",
         "No": "8/7",
         "Street": ", Palm Street",
-        "image": annex_1,
-        "gallery": [annex_0_bed, annex_0_bath, annex_0_bed, annex_0_bath],
+        // "image": annex_1,
+        // "gallery": [annex_0_bed, annex_0_bath, annex_0_bed, annex_0_bath],
         "views": 0,
         "Village": "Wakwella",
         "capacity": 4,
@@ -178,8 +180,8 @@ export const dummyAnnexData = [
         "owner": "67fe3467ed8a8fe17d0ba6e4",
         "No": "5/2 ",
         "Street": ", Ocean View Lane",
-        "image": annex_2,
-        "gallery": [annex_2_bed, annex_2_bath, annex_2_bed, annex_2_bath],
+        // "image": annex_2,
+        // "gallery": [annex_2_bed, annex_2_bath, annex_2_bed, annex_2_bath],
         "views": 0,
         "Village": "Hapugala",
         "capacity": 4,
@@ -196,8 +198,8 @@ export const dummyAnnexData = [
         "owner": "67fe3467ed8a8fe17d0ba6e3",
         "No": "23/6",
         "Street": ", Lotus Street 6",
-        "image": annex_3,
-        "gallery": [annex_1_bed, annex_3_bath ],
+        // "image": annex_3,
+        // "gallery": [annex_1_bed, annex_3_bath ],
         "views": 0,
         "Village": "Wakwella",
         "capacity": 2,

@@ -2,11 +2,13 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Title from "./Title";
 import AccommodationCards from "./AccommodationCards";
-import { dummyAnnexData, assets } from "../assets/assets";
+import { assets } from "../assets/assets";
 import "./FeaturedSection.css";
+import { useAppContext } from "../contex/AppContext";
 
 const FeaturedSection = () => {
   const navigate = useNavigate();
+  const {annexs} = useAppContext()
 
   return (
     <div className="featured-section-container">
@@ -18,7 +20,7 @@ const FeaturedSection = () => {
       </div>
 
       <div className="featured-section-grid">
-        {dummyAnnexData.slice(0, 6).map((annex) => (
+        {annexs.slice(0, 6).map((annex) => (
           <div key={annex._id}>
             <AccommodationCards annex={annex} />
           </div>

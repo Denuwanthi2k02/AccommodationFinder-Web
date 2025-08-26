@@ -4,9 +4,14 @@ import {assets } from "../../assets/assets";
 import "./ManageAccommodations.css";
 import { useAppContext } from "../../contex/AppContext";
 import toast from "react-hot-toast";
+import UpdateAccommodation from "../../components/Owner/UpdateAccommodation";
 
 
 const ManageAccommodations = () => {
+
+const [editingAnnex, setEditingAnnex] = useState(null); // annex to edit
+const [showUpdateModal, setShowUpdateModal] = useState(false);
+
 
   const{isOwner,axios,currency}=useAppContext()
 
@@ -56,6 +61,16 @@ const ManageAccommodations = () => {
       toast.error(error.message)
     }
   };
+
+const editAnnex = (annexId) => {
+  const annexToEdit = annexs.find(a => a._id === annexId);
+  if (!annexToEdit) return;
+
+  setEditingAnnex(annexToEdit);
+  setShowUpdateModal(true);
+};
+
+  
 
   useEffect(() => {
     isOwner &&fetchOwnerAnnexs();
@@ -120,11 +135,20 @@ const ManageAccommodations = () => {
                   />
 
                   <img
+                    onClick={()=>editAnnex(annex._id)}
+                    src={assets.edit}
+                    alt=""
+                    className="edit-action-icon"
+                  />
+
+                  <img
                     onClick={()=>deleteAnnex(annex._id)}
                     src={assets.delete_icon}
                     alt=""
                     className="action-icon"
                   />
+
+                  
 
                 </td>
               </tr>
@@ -132,6 +156,26 @@ const ManageAccommodations = () => {
           </tbody>
         </table>
       </div>
+      {showUpdateModal && editingAnnex && (
+  <div className="update-modal">
+    <div className="update-modal-content">
+      <button
+        className="close-modal"
+        onClick={() => setShowUpdateModal(false)}
+      >
+        &times;
+      </button>
+      <UpdateAccommodation
+        existingData={editingAnnex}
+        onClose={() => {
+          setShowUpdateModal(false);
+          fetchOwnerAnnexs(); // refresh data
+        }}
+      />
+    </div>
+  </div>
+)}
+
     </div>
   );
 };

@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Title from "../components/Title";
-import { assets, dummyAnnexData } from "../assets/assets";
+import { assets } from "../assets/assets";
 import AccommodationCards from "../components/AccommodationCards";
 import "./Accommodations.css";
+import { useSearchParams } from "react-router-dom";
+import { useAppContext } from "../contex/AppContext";
+
 
 const Accommodations = () => {
+  
   const [input, setInput] = useState("");
+  const { annexs, fetchAnnexs } = useAppContext();
+
+  // Fetch accommodations on component mount
+  useEffect(() => {
+    fetchAnnexs();
+  }, []);
 
   return (
     <div className="accommodations-container">
@@ -22,7 +32,7 @@ const Accommodations = () => {
             onChange={(e) => setInput(e.target.value)}
             value={input}
             type="text"
-            placeholder="Search by village, Street, or features"
+            placeholder="Search by distance, monthly rent, or capacity"
             className="accommodations-search-input"
           />
           <img src={assets.filter_icon} alt="filter" className="filter-icon" />
@@ -31,11 +41,11 @@ const Accommodations = () => {
       {/* List Section */}
       <div className="accommodations-list">
         <p className="accommodations-count">
-          Showing {dummyAnnexData.length} Accommodations
+          Showing {annexs.length} Accommodations
         </p>
         {/* Grid Section */}
         <div className="accommodations-grid">
-          {dummyAnnexData.map((accommodation, index) => (
+          {annexs.map((accommodation, index) => (
             <AccommodationCards key={index} annex={accommodation} />
           ))}
         </div>

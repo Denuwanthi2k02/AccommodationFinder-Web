@@ -4,10 +4,12 @@ import { useLocation, NavLink } from "react-router-dom";
 import "./Sidebar.css";
 import { useAppContext } from "../../contex/AppContext";
 import toast from "react-hot-toast";
+import UpdateUserProfile from "../../components/Owner/UpdateUserProfile";;
 
 const Sidebar = () => {
   const {user,axios,fetchUser} = useAppContext()  
   const location = useLocation();
+   const [isEditing, setIsEditing] = useState(false);
 
   const [image, setImage] = useState("");
 
@@ -35,25 +37,25 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       {/* Profile Image Upload */}
-      <div className="sidebar-profile group relative">
+      <div className="sidebar-profile group relative" onClick={() => setIsEditing(true)}>
         <label htmlFor="image">
           <img
             src={
-              image
-                ? URL.createObjectURL(image)
-                : user?.image ||
+              // image
+              //   ? URL.createObjectURL(image)
+               user?.image ||
                   "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=300"
             }
             alt="profile"
             className="sidebar-profile-img"
           />
-          <input
+          {/* <input
             type="file"
             id="image"
             accept="image/*"
             hidden
             onChange={(e) => setImage(e.target.files[0])}
-          />
+          /> */}
 
           <div className="sidebar-profile-overlay">
             <img src={assets.edit_icon} alt="edit" />
@@ -96,6 +98,14 @@ const Sidebar = () => {
           </NavLink>
         ))}
       </div>
+
+      {/*Popup Window */}
+      {isEditing && (
+        <UpdateUserProfile
+          existingUser={user}
+          onClose={() => setIsEditing(false)}
+        />
+      )}
     </div>
   );
 };

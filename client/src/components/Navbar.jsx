@@ -48,19 +48,7 @@ const Navbar = () => {
           </Link>
         ))}
 
-        {/* Search Input */}
-        <div className="navbar-search-container hidden-lg-flex">
-          <input
-            type="text"
-            className="navbar-search-input"
-            placeholder="Search Accommodation"
-          />
-          <img
-            src={assets.search_icon}
-            alt="Search"
-            className="navbar-search-icon"
-          />
-        </div>
+
 
         {/* Buttons Section */}
         <div className="navbar-button-group">
