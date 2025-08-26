@@ -1,14 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { dummyAnnexData, dummyOwnerData, assets } from "../assets/assets";
+import {  assets } from "../assets/assets";
 import "./AccommodationDetails.css";
+import { useAppContext } from "../contex/AppContext";
+import toast from "react-hot-toast";
 
 const AccommodationDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const { axios } = useAppContext();
 
-  const accommodation = dummyAnnexData.find((a) => a._id === id);
-  const owner = dummyOwnerData.find((o) => o._id === accommodation.owner);
+  const [accommodation, setAccommodation] = useState(null);
+  const [owner, setOwner] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchDetails = async () => {
+      try {
+        const { data } = await axios.get(`/api/user/accommodation/${id}`);
+        if (data.success) {
+          setAccommodation(data.annex);
+          setOwner(data.annex.owner);
+        } else {
+          toast.error(data.message);
+          navigate("/");
+        }
+      } catch (error) {
+        toast.error(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchDetails();
+  }, [id]);
+
+  if (loading) return <p>Loading...</p>;
+  if (!accommodation) return <p>No accommodation found.</p>;
+
+  // const accommodation = dummyAnnexData.find((a) => a._id === id);
+  // const owner = dummyOwnerData.find((o) => o._id === accommodation.owner);
 
   return accommodation ? (
     <div className="accommodation-container">
@@ -106,17 +136,18 @@ const AccommodationDetails = () => {
           <h2 className="owner-title">Owner Details & Contact</h2>
 
           <div className="owner-card">
-            <h3 className="owner-name">{owner.name}</h3>
+            <h3 className="owner-name">{owner?.name}</h3>
 
-            <p className="owner-contact">{owner.phone}</p>
-            <p className="owner-email">{owner.email}</p>
+            <p className="owner-contact">{owner?.phone}</p>
+            <p className="owner-email">{owner?.email}</p>
+             <p className="owner-address">{owner?.address}</p>
           </div>
 
           <div className="available-times">
             <h4>Available Times :</h4>
             <ul>
               {Array.isArray(owner.availableTime) ? (
-                owner.availableTime.map((time, index) => (
+                owner?.availableTime?.map((time, index) => (
                   <li key={index}>{time}</li>
                 ))
               ) : (

@@ -323,7 +323,7 @@ export const dummyDashboardData = {
 
 "completedBookings": 2,
 
-"recentBookings": [
+"recentViewing": [
 
 dummyMyBookingsData[0],
 

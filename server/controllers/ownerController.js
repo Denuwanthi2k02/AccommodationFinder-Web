@@ -1,3 +1,4 @@
+import bcrypt from "bcrypt";
 import User from "../model/User.js";
 import fs from "fs";
 import Accommodation from "../model/Accommodation.js";
@@ -169,7 +170,7 @@ export const getDashboardData = async (req, res) => {
       dashboardData: {  
         totalAccommodations,
         totalAvailable,
-        recentBookings: [], 
+        recentViewing: [], 
       },
       annexs, 
     });
@@ -214,6 +215,39 @@ export const updateUserImage = async (req, res)=>{
   }
 
 }
+
+
+// API to update user profile
+export const updateUserProfile = async (req, res) => {
+  try {
+    const { _id } = req.user;
+    const { name, email, phone, password, availableTime, address } = req.body;
+
+    const updateData = {
+      name,
+      email,
+      phone,
+      address,
+      availableTime: availableTime
+        ? availableTime.split(",").map((t) => t.trim())
+        : [],
+    };
+
+    // If password is provided, hash and update
+    if (password && password.length >= 8) {
+      updateData.password = await bcrypt.hash(password, 10);
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(_id, updateData, {
+      new: true,
+    });
+
+    res.json({ success: true, message: "Profile updated", user: updatedUser });
+  } catch (error) {
+    console.log(error.message);
+    res.json({ success: false, message: error.message });
+  }
+};
 
 
 // API to update an accommodation

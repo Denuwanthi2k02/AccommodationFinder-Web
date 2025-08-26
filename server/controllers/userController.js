@@ -141,3 +141,28 @@ export const searchAccommodations = async (req, res) => {
     res.json({ success: false, message: error.message });
   }
 };
+
+
+
+// Get accommodation details with owner & increment views
+export const getAnnexById = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Find annex and increment views atomically
+    const annex = await Accommodation.findByIdAndUpdate(
+      id,
+      { $inc: { views: 1 } },
+      { new: true }
+    ).populate("owner", "name email phone availableTime address image");
+
+    if (!annex) {
+      return res.json({ success: false, message: "Accommodation not found" });
+    }
+
+    res.json({ success: true, annex });
+  } catch (error) {
+    console.log(error.message);
+    res.json({ success: false, message: error.message });
+  }
+};

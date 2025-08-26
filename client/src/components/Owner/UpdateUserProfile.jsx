@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import { assets } from "../../assets/assets";
 import "./UpdateUserProfile.css";
 import Title from "../../components/Owner/Title";
+import { useAppContext } from "../../contex/AppContext";
+import toast from "react-hot-toast";
 
 const UpdateUserProfile = ({ existingUser, onClose }) => {
+  const { axios, fetchUser } = useAppContext();
   const [profileImage, setProfileImage] = useState(null);
   const [user, setUser] = useState({
     name: "",
@@ -30,10 +33,30 @@ const UpdateUserProfile = ({ existingUser, onClose }) => {
     }
   }, [existingUser]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Updated User Data:", { ...user, profileImage });
-    onClose(); // Close after update (for now, frontend only)
+
+    try {
+      //  Update profile image if new one selected
+      if (profileImage && typeof profileImage !== "string") {
+        const formData = new FormData();
+        formData.append("image", profileImage);
+        const { data } = await axios.post("/api/owner/update-image", formData);
+        if (!data.success) return toast.error(data.message);
+      }
+
+      // Update profile details
+      const { data } = await axios.put("/api/owner/update-profile", user);
+      if (data.success) {
+        toast.success("Profile updated successfully");
+        fetchUser(); // refresh context
+        onClose();
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   return (

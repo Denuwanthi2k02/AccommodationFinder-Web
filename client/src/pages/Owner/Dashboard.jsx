@@ -13,7 +13,7 @@ const Dashboard = () => {
   const [data, setData] = useState({
     totalAccommodations: 0,
     totalAvailable: 0,
-     recentBookings: [] 
+     recentViewing: [] 
   });
 
   const dashboardCards = [
@@ -78,7 +78,7 @@ const Dashboard = () => {
         <div className="recent-bookings">
           <h1 className="section-title">Total Views</h1>
           <p className="section-subtitle">Total accommodation impressions</p>
-          {data.recentBookings.map((booking, index) => (
+          {data.recentViewing.map((booking, index) => (
             <div key={index} className="booking-item">
               <div className="booking-info">
                 <div className="booking-icon">

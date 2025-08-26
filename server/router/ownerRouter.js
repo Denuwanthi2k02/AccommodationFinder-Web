@@ -1,6 +1,6 @@
 import express from "express";
 import { protect } from "../middleware/auth.js";
-import { addAnnex, changeRoleToOwner, deleteAnnex, getOwnerAnnex, toggleAnnexAvailability,getDashboardData, updateUserImage ,updateAnnex} from "../controllers/ownerController.js";
+import { addAnnex, changeRoleToOwner, deleteAnnex, getOwnerAnnex, toggleAnnexAvailability,getDashboardData, updateUserImage ,updateAnnex,updateUserProfile} from "../controllers/ownerController.js";
 import upload from "../middleware/multer.js"
 
 const ownerRouter = express.Router();
@@ -20,6 +20,7 @@ ownerRouter.post("/toggle-accommodation" ,protect,toggleAnnexAvailability)
 ownerRouter.post("/delete-accommodation" ,protect,deleteAnnex)
 ownerRouter.get("/dashboard" ,protect,getDashboardData)
 ownerRouter.post("/update-image" ,protect,upload.single("image"),updateUserImage)
+ownerRouter.put("/update-profile", protect, updateUserProfile);
 ownerRouter.put(
   "/update-accommodation",
   upload.fields([

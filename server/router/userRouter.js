@@ -4,7 +4,8 @@ import {
   registerUser,
   getUserData,
   searchAccommodations,
-  getAnnexs
+  getAnnexs,
+  getAnnexById 
 } from "../controllers/userController.js";
 import { protect } from "../middleware/auth.js";
 
@@ -25,5 +26,5 @@ userRouter.get("/accommodations", getAnnexs);
 // Search accommodations
 userRouter.get("/search", searchAccommodations);
 
-
+userRouter.get("/accommodation/:id", getAnnexById);
 export default userRouter;
