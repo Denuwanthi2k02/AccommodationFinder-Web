@@ -15,6 +15,7 @@ import { useAppContext } from './contex/AppContext'
 
 
 
+
 const App = () => {
 
   const {showLogin} =useAppContext()
@@ -32,6 +33,7 @@ const App = () => {
       <Route path='/' element={<Home/>}/>
       <Route path='/Accommodation-details/:id' element={<AccommodationDetails/>}/>
       <Route path='/Accommodations' element={<Accommodations/>}/>
+
       <Route path='/owner' element={<Layout/>}>
           <Route index element={<Dashboard/>}/>
           <Route path='add-accommodation' element={<AddAccommodation/>}/>
