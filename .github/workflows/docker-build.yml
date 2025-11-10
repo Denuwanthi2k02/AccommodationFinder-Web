@@ -27,6 +27,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./client
+          file: ./client/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/accommodationfinder-frontend:latest
           cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/accommodationfinder-frontend:latest
@@ -37,6 +38,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./server
+          file: ./server/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/accommodationfinder-backend:latest
           cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/accommodationfinder-backend:latest
