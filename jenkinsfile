@@ -1,0 +1,12 @@
+pipeline {
+    agent any
+    stages {
+        stage('Clone') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/Denuwanthi2k02/AccommodationFinder-Web.git',
+                    credentialsId: 'github-token'
+            }
+        }
+    }
+}
