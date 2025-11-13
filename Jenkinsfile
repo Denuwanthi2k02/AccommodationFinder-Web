@@ -2,13 +2,12 @@ pipeline {
     agent any
 
     environment {
-        
         DOCKERHUB_CREDENTIALS = 'dockerhub-credentials'
         DOCKERHUB_USERNAME = 'denuwanthi2k02'
     }
 
     stages {
-        stage('Clone') {
+        stage('Clone Repo') {
             steps {
                 git branch: 'main',
                     url: 'https://github.com/Denuwanthi2k02/AccommodationFinder-Web.git',
@@ -16,40 +15,34 @@ pipeline {
             }
         }
 
-        stage('Build Frontend Docker Image') {
+        stage('Build & Push Frontend') {
             steps {
-                script {
-                    sh "docker build -t ${DOCKERHUB_USERNAME}/accommodationfinder-frontend:latest ./client"
+                withCredentials([usernamePassword(credentialsId: DOCKERHUB_CREDENTIALS, usernameVariable: 'USER', passwordVariable: 'PASS')]) {
+                    sh '''
+                        # Build frontend Docker image
+                        docker build -t ${DOCKERHUB_USERNAME}/accommodationfinder-frontend:latest ./client
+
+                        # Login and push
+                        echo "$PASS" | docker login -u "$USER" --password-stdin
+                        docker push ${DOCKERHUB_USERNAME}/accommodationfinder-frontend:latest
+                        docker logout
+                    '''
                 }
             }
         }
 
-        stage('Build Backend Docker Image') {
+        stage('Build & Push Backend') {
             steps {
-                script {
-                    sh "docker build -t ${DOCKERHUB_USERNAME}/accommodationfinder-backend:latest ./server"
-                }
-            }
-        }
+                withCredentials([usernamePassword(credentialsId: DOCKERHUB_CREDENTIALS, usernameVariable: 'USER', passwordVariable: 'PASS')]) {
+                    sh '''
+                        # Build backend Docker image
+                        docker build -t ${DOCKERHUB_USERNAME}/accommodationfinder-backend:latest ./server
 
-        stage('Push Frontend Docker Image') {
-            steps {
-                script {
-                    withCredentials([usernamePassword(credentialsId: DOCKERHUB_CREDENTIALS, usernameVariable: 'USER', passwordVariable: 'PASS')]) {
-                        sh "echo $PASS | docker login -u $USER --password-stdin"
-                        sh "docker push ${DOCKERHUB_USERNAME}/accommodationfinder-frontend:latest"
-                    }
-                }
-            }
-        }
-
-        stage('Push Backend Docker Image') {
-            steps {
-                script {
-                    withCredentials([usernamePassword(credentialsId: DOCKERHUB_CREDENTIALS, usernameVariable: 'USER', passwordVariable: 'PASS')]) {
-                        sh "echo $PASS | docker login -u $USER --password-stdin"
-                        sh "docker push ${DOCKERHUB_USERNAME}/accommodationfinder-backend:latest"
-                    }
+                        # Login and push
+                        echo "$PASS" | docker login -u "$USER" --password-stdin
+                        docker push ${DOCKERHUB_USERNAME}/accommodationfinder-backend:latest
+                        docker logout
+                    '''
                 }
             }
         }
@@ -60,5 +53,4 @@ pipeline {
             echo "Pipeline finished."
         }
     }
-    
 }
