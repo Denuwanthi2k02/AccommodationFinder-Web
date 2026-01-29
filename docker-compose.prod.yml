@@ -5,7 +5,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - VITE_API_URL=http://13.201.72.207:5000
+      - VITE_API_URL=http://13.232.135.114:5000
     restart: always
 
   backend:

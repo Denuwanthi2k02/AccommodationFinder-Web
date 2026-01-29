@@ -5,7 +5,7 @@ pipeline {
         DOCKERHUB_CREDENTIALS = 'dockerhub-credentials'
         DOCKERHUB_USERNAME = 'denuwanthi2k02'
         EC2_USER = 'ubuntu'
-        EC2_IP = '13.201.72.207' 
+        EC2_IP = '13.232.135.114' 
     }
 
     stages {
