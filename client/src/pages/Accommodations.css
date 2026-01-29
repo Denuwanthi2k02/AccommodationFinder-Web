@@ -1,0 +1,99 @@
+:root {
+  --primary: #fef7f2;
+  --secondary: #2b1b12;
+  --accent: #ddc7bb;
+  --text: #695346;
+  --muted: #ffffff;
+  --info: #4f3527;
+  --cart: #e8d5c4;
+  --search: rgba(105, 83, 70, 0.7);
+}
+
+/* === Main Container === */
+.accommodations-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem 1rem;
+  background: var(--primary);
+}
+
+/* === Header Section === */
+.accommodations-header {
+  text-align: center;
+  width: 100%;
+  max-width: 1400px;
+  color: var(--secondary);
+}
+
+/* === Search Section === */
+.accommodations-search-box {
+  display: flex;
+  margin: 1.5rem auto;
+  align-items: center;
+  background: white;
+  padding: 0 1rem;
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 35rem;
+  height: 3rem;
+  border-radius: 9999px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-icon,
+.filter-icon {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.search-icon {
+  margin-right: 0.5rem;
+}
+
+.filter-icon {
+  margin-left: 0.5rem;
+}
+
+.accommodations-search-input {
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+/* === List Section === */
+.accommodations-list {
+  padding: 2.5rem 1.5rem;
+  width: 70%;
+  max-width: 1280px;
+}
+
+.accommodations-count {
+  color: var(--text);
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+/* === Grid Section === */
+.accommodations-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 640px) {
+  .accommodations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .accommodations-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

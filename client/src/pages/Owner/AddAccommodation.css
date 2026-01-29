@@ -1,0 +1,138 @@
+:root {
+  --primary: #fef7f2;
+  --secondary: #2b1b12;
+  --accent: #ddc7bb;
+  --text: #695346;
+  --muted: #ffffff;
+  --info: #4f3527;
+  --cart: #e8d5c4;
+  --search: rgba(105, 83, 70, 0.7);
+}
+
+/* Main container */
+.addannex-container {
+  padding: 2.5rem 1rem;
+  flex: 1;
+  margin-left: 1.5rem;
+}
+
+/* Form container */
+.addannex-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 800px;
+  color: var(--text);
+  font-size: 0.875rem;
+  margin-top: 1.5rem;
+}
+
+/* Grid layouts */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Individual form group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.5rem 0.75rem;
+  margin-top: 0.25rem;
+  border: 1px solid rgba(105, 83, 70, 0.5);
+  border-radius: 0.375rem;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--secondary);
+}
+
+/* Upload Section */
+.upload-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.upload-label {
+  cursor: pointer;
+}
+
+.upload-preview {
+  height: 3.5rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+}
+
+.upload-text {
+  font-size: 0.875rem;
+  color: var(--text);
+}
+
+/* Gallery Upload Section */
+.gallery-previews {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.gallery-preview {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 0.375rem;
+  border: 1px solid rgba(105, 83, 70, 0.3);
+}
+
+/* Submit button */
+.submit-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  background-color: var(--secondary);
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  cursor: pointer;
+  width: max-content;
+  transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: var(--text);
+}
