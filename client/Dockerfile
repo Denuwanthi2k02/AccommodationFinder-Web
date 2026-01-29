@@ -1,5 +1,8 @@
 FROM node:18-bullseye AS build
 
+ARG VITE_API_URL
+ENV VITE_API_URL=$VITE_API_URL
+
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
@@ -12,4 +15,3 @@ RUN npm install -g serve
 COPY --from=build /app/dist ./dist
 EXPOSE 3000
 CMD ["serve", "-s", "dist", "-l", "3000"]
-
