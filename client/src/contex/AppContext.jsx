@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 
 
-axios.defaults.baseURL =import.meta.env.VITE_BASE_URL
+axios.defaults.baseURL = import.meta.env.VITE_API_URL
+
 export const AppContext = createContext();
 
 export const AppProvider = ({children  })=>{
