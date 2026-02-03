@@ -21,7 +21,6 @@ export const AppProvider = ({children  })=>{
 
     const[annexs,setAnnexs]=useState([])
 
-    //finction to check if user is logged in
     const fetchUser =async()=>{
         try {
             const {data}=await axios.get('/api/user/data')
@@ -38,7 +37,6 @@ export const AppProvider = ({children  })=>{
     }
     
 
-    //Function tofetch all accommodations from the server
     const fetchAnnexs = async ()=>{
         try {
             const {data}= await axios.get('/api/user/accommodations')
@@ -48,7 +46,6 @@ export const AppProvider = ({children  })=>{
         }
     }
 
-    //Fuction to log out the user
     const logout =()=>{
         localStorage.removeItem('token')
         setToken(null)
@@ -61,14 +58,12 @@ export const AppProvider = ({children  })=>{
     }
 
 
-    //useEffect to retrieve from localStorage
     useEffect (()=>{
         const token =localStorage.getItem('token')
         setToken(token)
         fetchAnnexs()
     },[])
 
-    //useEffect to fetch user data when token is available
     useEffect(()=>{
         if(token){
             axios.defaults.headers.common['Authorization'] =`${token}`

@@ -21,7 +21,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # 3. Build and push Frontend image ✅ (FIXED)
+      # 3. Build and push Frontend image 
       - name: Build and push Frontend
         uses: docker/build-push-action@v4
         with:
@@ -34,7 +34,7 @@ jobs:
           cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/accommodationfinder-frontend:latest
           cache-to: type=inline
 
-      # 4. Build and push Backend image ✅
+      # 4. Build and push Backend image 
       - name: Build and push Backend
         uses: docker/build-push-action@v4
         with:
