@@ -32,6 +32,7 @@ pipeline {
             }
         }
 
+
         stage('Build & Push Backend') {
             steps {
                 withCredentials([usernamePassword(credentialsId: DOCKERHUB_CREDENTIALS, usernameVariable: 'USER', passwordVariable: 'PASS')]) {
