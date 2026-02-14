@@ -46,6 +46,7 @@ pipeline {
             }
         }
 
+
         stage('Deploy to AWS EC2') {
             steps {
                 sshagent(['aws-ec2-key']) {
