@@ -40,7 +40,7 @@ const Hero = () => {
       {/* Left Content */}
       <div className="hero-text">
         <h1>
-          Welcome To <br /> <span>Denuwanthi</span>
+          Welcome To <br /> <span>AnnexMate</span>
         </h1>
         <p>
           Find your perfect stay – quick and easy! AnnexMate is designed for
